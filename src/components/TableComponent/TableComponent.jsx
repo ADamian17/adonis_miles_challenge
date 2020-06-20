@@ -1,40 +1,65 @@
 import React from 'react'
+import { Button, Table, Icon } from 'semantic-ui-react';
 
 import './TableComponent.scss';
 
-const TableComponent = ({ children }) => {
+import Rewards from '../Rewards/Rewards'
 
- return (
-  <div className='table-area'>
-    <div className='rewards-area'>
-      <strong>Rewards</strong>
-      <div className='reward-list'>
-      {children}
-      </div>
-    </div>
-    <div className='categories-area'>
-      <strong>Categories</strong>
-      <div className='subheader'>
-        <div className="cardTitle1">
-          <h4>C1</h4>
-        </div>
-        <div className="cardTitle2">
-        <h4>C2</h4>
-        </div>
-        <div className="cardTitle3">
-        <h4>C3</h4>
-        </div>
-        <div className="cardTitle4">
-        <h4>C4</h4>
-        </div>
-        <div className="cardTitle5">
-        <h4>C5</h4>
-        </div>
-      </div>
-      drag here
-    </div>
-  </div>
- )
+const TableComponent = (props) => {
+
+  const { rewards, categories, defaultPosition, handleSave, handleUndo } = props;
+  const rewardsList = rewards.map(
+    (reward, index) =>
+      <Rewards
+        // HandleMap={this.HandleMap} 
+        onControlledDragStop={props.onControlledDragStop}
+        // handleRemove={props.handleRemove}
+        defaultPosition={ defaultPosition}
+        reward={reward}
+        key={index} />
+  );
+
+  const categoriesList = categories.map((item) => <Table.HeaderCell textAlign='center'>{item.title}</Table.HeaderCell>);
+
+  return (
+    <Table celled structured>
+      {/* NOTE Table Header */}
+      <Table.Header>
+        <Table.Row>
+        <Table.HeaderCell textAlign='center' rowSpan='2'>Rewards</Table.HeaderCell>
+        <Table.HeaderCell textAlign='center' colSpan='5'>Categories</Table.HeaderCell>
+        </Table.Row>
+        <Table.Row>
+        {categoriesList}
+        </Table.Row>
+      </Table.Header>
+  
+      <Table.Body>
+       {rewardsList}
+      </Table.Body>
+      {/* Table Footer */}
+      <Table.Footer fullWidth>
+      <Table.Row>
+        <Table.HeaderCell />
+        <Table.HeaderCell colSpan='5'>
+        <Button
+        floated='right'
+        icon
+        labelPosition='left'
+        primary
+        size='small'
+        onClick={ handleSave }   
+        >
+        <Icon name='save' />save
+        </Button>
+        <Button size='small'
+         onClick={handleUndo}
+        >Undo</Button>
+        </Table.HeaderCell>
+      </Table.Row>
+      </Table.Footer>
+    </Table>
+  )
 }
 
 export default TableComponent;

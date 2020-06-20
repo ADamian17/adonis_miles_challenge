@@ -1,12 +1,9 @@
 import React from 'react';
-import { Button, Grid, Table, Header, Icon } from 'semantic-ui-react';
-import { ToastContainer, toast } from 'react-toastify';
+import { Header } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 
-import './App.scss';
-
-
-import Rewards from './components/Rewards/Rewards';
 import MainContainer from './components/MainContainer/MainContainer';
+import TableComponent from './components/TableComponent/TableComponent';
 import { REWARDS, CATEGORIES } from './data/data';
 import { categoryCol } from './utils/functs'
 
@@ -16,7 +13,7 @@ class App extends React.Component {
     currentPosition: {
       x: 0, y: 0
     },
-    defultPosition: {
+    defaultPosition: {
       x: 140,
       y: 0
     },
@@ -54,8 +51,8 @@ class App extends React.Component {
   handleSave = () => {
 
     const success = toast.success('You have save you rewards!', {
-      position: "top-center",
-      autoClose: 5000,
+      position: "top-right",
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -63,8 +60,8 @@ class App extends React.Component {
     });
 
     const error = toast.error('There is nothing to save', {
-      position: "top-center",
-      autoClose: 5000,
+      position: "top-right",
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -76,7 +73,7 @@ class App extends React.Component {
     console.log('localStorageLength:', localStorageLength)
     console.log('rewardsMapLength:', rewardsMap.length )
     
-    if ( localStorageLength !== 0 && rewardsMap.length !== 0) {
+    if ( localStorageLength === 0 && rewardsMap.length > 0) {
       localStorage.setItem('rewardsMap', JSON.stringify({ ...rewardsMap }));
       return success
     } else { 
@@ -86,103 +83,47 @@ class App extends React.Component {
   
   // NOTE this is not working 
   handleUndo = () => {
-    this.setState({
-      rewardsMap: [],
-      defultPosition: {
-        x: 140,
-        y: 0
-      }
-    });
+    const { currentPosition, defaultPosition } = this.state;
+    if (currentPosition !== defaultPosition) { 
+      this.setState({
+        rewardsMap: [],
+        defultPosition: {
+          x: 140,
+          y: 0
+        }
+      });
+    }
     console.log(this.state.rewardsMap)
   };
 
   // NOTE this is not working 
   handleRemove = (id) => {
-    const { defultPosition, rewards } = this.state
+    const { defaultPosition, rewards } = this.state
     const selectedReward = rewards[id]
-    if (selectedReward.position !== defultPosition) {
+    if (selectedReward.position !== defaultPosition) {
       this.setState({
-        position: defultPosition
+        position: defaultPosition
       })
       console.log(selectedReward)
     };
   };
 
   render () {
-    const { rewards, categories, defultPosition } = this.state;
-   
-    const rewardsList = rewards.map(
-      (reward, index) =>
-        <Rewards
-          HandleMap={this.HandleMap} 
-          onControlledDragStop={this.onControlledDragStop}
-          handleRemove={this.handleRemove}
-          defaultPosition={ defultPosition}
-          reward={reward}
-          key={index} />
-    );
+    const { rewards, categories, defaultPosition } = this.state;
 
-    const categoriesList = categories.map((item) => <Table.HeaderCell textAlign='center'>{item.title}</Table.HeaderCell>)
-    
     return (
       <MainContainer>
-         <Header>Miles Front-end Challenge</Header>
+        <Header>Miles Front-end Challenge</Header>
+
+        <TableComponent
+          categories={categories}
+          rewards={rewards}
+          handleSave={this.handleSave}
+          handleUndo={this.handleUndo}
+          defaultPosition={defaultPosition}
+          onControlledDragStop={this.onControlledDragStop}
+        />
       </MainContainer>
-    //   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-
-    //     {/* NOTE Notification */}
-    //     <ToastContainer
-    //       position="top-center"
-    //       autoClose={5000}
-    //       hideProgressBar={false}
-    //       newestOnTop={false}
-    //       closeOnClick
-    //       rtl={false}
-    //       pauseOnFocusLoss
-    //       draggable
-    //       pauseOnHover
-    //       />
-
-    //   <Grid.Column style={{ width: '90%' }}>
-    //     <Header>Miles Front-end Challenge</Header>
-    //     {/* Table start*/}
-    //     <Table celled structured>
-    //     <Table.Header>
-    //       <Table.Row>
-    //         <Table.HeaderCell textAlign='center' rowSpan='2'>Rewards</Table.HeaderCell>
-    //         <Table.HeaderCell textAlign='center' colSpan='5'>Categories</Table.HeaderCell>
-    //       </Table.Row>
-          
-    //       <Table.Row>
-    //       {categoriesList}
-    //       </Table.Row>
-          
-    //     </Table.Header>
-
-    //       <Table.Body>
-    //         {rewardsList}
-    //       </Table.Body>
-    //       <Table.Footer fullWidth>
-    //         <Table.Row>
-    //           <Table.HeaderCell />
-    //           <Table.HeaderCell colSpan='5'>
-    //             <Button
-    //               floated='right'
-    //               icon
-    //               labelPosition='left'
-    //               primary
-    //               size='small'
-    //               onClick={this.handleSave}  
-    //             >
-    //               <Icon name='save' /> save
-    //             </Button>
-    //               <Button size='small' onClick={this.handleUndo}>Undo</Button>
-    //           </Table.HeaderCell>
-    //         </Table.Row>
-    //       </Table.Footer>
-    //     </Table>
-    //   </Grid.Column>
-    // </Grid>
    );
  }
 }
