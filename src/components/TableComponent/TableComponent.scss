@@ -1,0 +1,43 @@
+.table-area {
+  width:  900px;
+  height: 550px;
+  border: 1px solid black;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-template-rows: 100px auto;
+  grid-template-areas: 
+    "rewrads categories"
+    "rewradsCard categoriesCard";
+  
+  strong {
+    border-bottom: 2px solid black;
+  }  
+  .rewards-area {
+    grid-area: rewrads;
+  }
+  .reward-list {
+    grid-area: rewradsCard;
+  }
+
+  .categories-area {
+    grid-area: categories;
+    border-left: 2px solid black;
+
+    .subheader {
+      grid-area: categoriesCard;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+      "c1 c2 c3 c4 c5";
+
+      border:1px solid black;
+
+      .cardTitle1 {
+        grid-column: 1 / 1;
+      }
+    }
+
+  }
+}
+

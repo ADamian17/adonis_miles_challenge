@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Miles Front-end Challenge
 
-## Available Scripts
+!['grafica'](./public/Picture1.png)
 
-In the project directory, you can run:
 
-### `npm start`
+## Objective: Map the Rewards with the Categories
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Consider a reward related company like "Groupon" which have several rewards like R1, R2, R3, R4 and R5 that are categorized between categories like C1, C2, C3, C4, and C5.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Requirements:
+1. A reward can be a part of multiple categories. 
+Eg:
+R1 -> C1
+R2 -> C2, C3 and so on...
+You can drag a reward to achieve this functionality shown by red dotted lines.
 
-### `npm test`
+2. A reward can be removed from any category. You have a cross on the reward R4 which helps to remove the reward from that category only.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. A reward can also be dragged between the swimlanes. In such a case, the reward gets removed from the former swimlane. 
 
-### `npm run build`
+4. The reward should always stay in the reward swimlane so that you can keep dragging in one or more categories.  (Each row is a swimlane.  The red arrows show movement within a swimlane.)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Provide an undo/redo button.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+6. Provide a “save” button that saves the arrangement to localStorage.  Feel free to save to a backend if you’d like to.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Once you have completed the challenge, deploy on the cloud of your choice and give us the link to evaluate.  We will require the source code for the technical phone screen.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Evaluation Basis
+*	Ensure that your code is bug free and is hosted on a publicly accessible site.
+*	You must use the React framework.
+*	You should demonstrate the use of a state management framework.  You may use any of redux, mobx, or rxjs.
+*	You must demonstrate test cases.  Since there are DOM operations, please use the dom testinmiles g library or any alternative of your choice.
