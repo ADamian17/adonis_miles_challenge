@@ -24,22 +24,17 @@ export const REWARDS = [
 export const CATEGORIES = [
   {
     title: 'C1',
-    rewards: []
   },
   {
     title: 'C2',
-    rewards: []
   },
   {
     title: 'C3',
-    rewards: []
   },
   {
     title: 'C4',
-    rewards: []
   },
   {
     title: 'C5',
-    rewards: []
   },
 ]  
