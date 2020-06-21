@@ -8,13 +8,13 @@ import './Rewards.scss';
 class Rewards extends React.Component {
 
   render () {
-    const { reward, defaultPosition, handleRemove, onControlledDragStop } = this.props;
+    const { reward, defaultPosition, currentPosition ,handleRemove, onControlledDragStop } = this.props;
     return (
       <Table.Row>
         <Table.Cell textAlign='center'>
           <Draggable
             axis="x"
-            defaultPosition={defaultPosition}
+            position={ currentPosition ? currentPosition : defaultPosition }
             onStop={(e, position) => onControlledDragStop(e, position, reward.id)}
           >
             <div className='cardContainer'>

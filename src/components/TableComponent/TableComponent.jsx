@@ -7,14 +7,15 @@ import Rewards from '../Rewards/Rewards'
 
 const TableComponent = (props) => {
 
-  const { rewards, categories, defaultPosition, handleSave, handleUndo, handleRemove } = props;
+  const { rewards, categories, defaultPosition, currentPosition, handleSave, handleUndo, handleRemove } = props;
   const rewardsList = rewards.map(
     (reward, index) =>
       <Rewards
         // HandleMap={this.HandleMap} 
         onControlledDragStop={props.onControlledDragStop}
         handleRemove={handleRemove}
-        defaultPosition={ defaultPosition}
+        defaultPosition={defaultPosition}
+        currentPosition={currentPosition}
         reward={reward}
         key={index} />
   );

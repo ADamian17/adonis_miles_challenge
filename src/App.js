@@ -48,7 +48,6 @@ class App extends React.Component {
   // NOTE ###################################################################################
 
   handleSave = () => {
-
     const success = toast.success('You have save you rewards!', {
       position: "top-right",
       autoClose: 3000,
@@ -101,14 +100,14 @@ class App extends React.Component {
     const selectedReward = rewards[id]
     if (selectedReward.position !== defaultPosition) {
       this.setState({
-        position: defaultPosition
+        currentPosition: defaultPosition
       })
       console.log(selectedReward)
     };
   };
 
   render () {
-    const { rewards, categories, defaultPosition } = this.state;
+    const { rewards, categories, defaultPosition, currentPosition } = this.state;
 
     return (
       <MainContainer>
@@ -121,6 +120,7 @@ class App extends React.Component {
           handleUndo={this.handleUndo}
           handleRemove={this.handleRemove}
           defaultPosition={defaultPosition}
+          currentPosition={currentPosition}
           onControlledDragStop={this.onControlledDragStop}
         />
       </MainContainer>
