@@ -1,17 +1,22 @@
 import React from 'react';
-import{ BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
+
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-     <App />
-    </Router>
+      <Router>
+      <App />
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
