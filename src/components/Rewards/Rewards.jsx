@@ -18,11 +18,11 @@ class Rewards extends React.Component {
             onStop={(e, position) => onControlledDragStop(e, position, reward.id)}
           >
             <div className='cardContainer'>
-              <div className="cardHeader" onClick={() => handleRemove(reward.id) }>
-                <Icon name='times'/>
+              <div className="cardHeader">
+                <Icon className='crossIcon' name='times' onClick={() => handleRemove(reward.id)} />
               </div>
               <div className="cardBody">
-              <strong className="titles">{reward.title}</strong>
+              <strong>{reward.title}</strong>
               </div>
             </div>
           </Draggable>

@@ -9,7 +9,6 @@ import { categoryCol } from './utils/functs'
 
 class App extends React.Component {
   state = {
-    rewardsCount: 0,
     currentPosition: {
       x: 0, y: 0
     },
@@ -120,6 +119,7 @@ class App extends React.Component {
           rewards={rewards}
           handleSave={this.handleSave}
           handleUndo={this.handleUndo}
+          handleRemove={this.handleRemove}
           defaultPosition={defaultPosition}
           onControlledDragStop={this.onControlledDragStop}
         />
