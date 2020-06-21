@@ -1,14 +1,15 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
+// import { connect } from 'react-redux';
 
 import MainContainer from './components/MainContainer/MainContainer';
 import TableComponent from './components/TableComponent/TableComponent';
-import { REWARDS, } from './data/data';
 import { categoryCol } from './utils/functs'
+import TableContainer from './containers/TableContainer';
 
 class App extends React.Component {
-
+    // remove this later 
     state = {
         currentPosition: {
             x: 0, y: 0
@@ -17,7 +18,6 @@ class App extends React.Component {
             x: 140,
             y: 0
         },
-        rewards: REWARDS,
         rewardsMap: [],
         selectedReward: {}
     };
@@ -39,7 +39,8 @@ class App extends React.Component {
         this.setState({
             selectedReward: {
                 ...reward,
-                ...position
+                ...position,
+                ...categoryCol(position.x)
             }
         });
         console.log(this.state.selectedReward)
@@ -60,11 +61,10 @@ class App extends React.Component {
     };
 
     HandleMap = () => {
-        const { rewardsMap, selectedReward, currentPosition } = this.state
-        console.log(selectedReward);
-        const mapedReward = { ...categoryCol(currentPosition), ...selectedReward, }
-        if (selectedReward) {
-            rewardsMap.push(mapedReward);
+        const { rewardsMap, selectedReward } = this.state
+
+        if (selectedReward && selectedReward.x < 875 && selectedReward.x > 199) {
+            rewardsMap.push(selectedReward);
         };
 
         console.log(this.state.rewardsMap);
@@ -93,15 +93,38 @@ class App extends React.Component {
 
         const { rewardsMap } = this.state
         const localStorageLength = localStorage.length;
-        console.log('localStorageLength:', localStorageLength)
-        console.log('rewardsMapLength:', rewardsMap.length)
 
         if (localStorageLength === 0 && rewardsMap.length > 0) {
             localStorage.setItem('rewardsMap', JSON.stringify({ ...rewardsMap }));
             return success
-        } else {
-            return error;
         }
+        console.log('localStorageLength:', localStorageLength)
+        console.log('rewardsMapLength:', rewardsMap.length)
+        return error;
+    };
+
+    // NOTE this is not working 
+    handleRemove = (id) => {
+        const { selectedReward } = this.state;
+        const defaultX = this.state.defaultPosition.x
+        const selectedRewardX = selectedReward.x
+        const reward = this.state.rewards[id];
+
+        if (selectedRewardX !== defaultX && selectedReward.id === id) {
+            this.setState({
+                selectedReward: {
+                    ...reward,
+                    x: 0,
+                    y: 0
+                }
+                // rewardsMap: rewardsMap.splice(selectedReward.id, 1)
+            });
+            console.log('id:', id)
+            console.log('selectedReward:', selectedReward)
+            console.log(selectedRewardX)
+            console.log(this.state.currentPosition)
+            return;
+        };
     };
 
     // NOTE this is not working 
@@ -110,30 +133,13 @@ class App extends React.Component {
         const localStorageLength = localStorage.length;
 
         if (localStorageLength > 0 && rewardsMap.length > 0) {
-            localStorage.removeItem('rewardsMap')
+            localStorage.removeItem('rewardsMap');
             this.setState({
                 rewardsMap: []
             });
-            console.log(rewardsMap);
         };
-
-    };
-
-    // NOTE this is not working 
-    handleRemove = (id) => {
-        const { defaultPosition, rewards, rewardsMap } = this.state
-        const selectedReward = rewards[id]
-
-        if (selectedReward.position !== defaultPosition) {
-            selectedReward.position = defaultPosition;
-            console.log(selectedReward.id)
-            return;
-        };
-
-        this.setState({
-            rewardsMap: rewardsMap.splice(selectedReward.id, 1)
-        });
         console.log(rewardsMap);
+        console.log('localStorageLength:', localStorageLength)
     };
 
     render() {
@@ -142,16 +148,7 @@ class App extends React.Component {
         return (
             <MainContainer>
                 <Header>Miles Front-end Challenge</Header>
-
-                <TableComponent
-                    rewards={rewards}
-                    onStart={this.onStart}
-                    handleSave={this.handleSave}
-                    handleUndo={this.handleUndo}
-                    defaultPosition={defaultPosition}
-                    currentPosition={currentPosition}
-                    onControlledDragStop={this.onControlledDragStop}
-                />
+                <TableContainer />
             </MainContainer>
         );
     }
@@ -160,5 +157,4 @@ class App extends React.Component {
 export default App;
 
 
-// handleRemove={this.handleRemove}
 

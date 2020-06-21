@@ -1,45 +1,69 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Table, Icon } from 'semantic-ui-react';
 import Draggable from 'react-draggable';
 
-
-
-
 import './Rewards.scss';
+
+import { CATEGORIES } from '../../data/data'
 
 class Rewards extends React.Component {
 
+  // handleRewards = () => {
+  //   for (let reward in this.props.rewards) {
+  //     for (let idx of reward) {
+  //       console.log(idx)
+  //     }
+  //   };
+  // };
+
   render() {
-    const { reward, handleRemove, onControlledDragStop, onStart, defaultPosition, currentPosition } = this.props;
+    console.log(this.props)
+    const { reward, cols } = this.props
+    const position = { x: 140, y: 0 }
+
+    const categoriesCol = CATEGORIES.map(col => <Table.Cell >
+      {cols.includes(col.title) ? <div className='cardContainer'>
+        <div className="cardHeader">
+          <Icon
+            className='crossIcon'
+            name='times'
+          />
+        </div>
+        <div className="cardBody">
+          <strong>{reward}</strong>
+        </div>
+      </div> : null}
+    </Table.Cell>
+    )
+
+    const rewardsDraggable = cols.map((item) =>
+
+      <Draggable
+        axis="x"
+        position={position}
+      >
+        <div className='cardContainer'>
+          <div className="cardHeader">
+            <Icon
+              className='crossIcon'
+              name='times'
+            />
+          </div>
+          <div className="cardBody">
+            <strong>{reward}</strong>
+          </div>
+        </div>
+      </Draggable>
+    )
+
     return (
       <Table.Row>
         <Table.Cell textAlign='center'>
-          <Draggable
-            axis="x"
-            onStart={() => onStart(reward.id)}
-            defaultPosition={currentPosition.x !== 0 ? currentPosition : defaultPosition}
-            onStop={(e, position) => onControlledDragStop(e, position, reward.id)}
-          >
-            <div className='cardContainer'>
-              <div className="cardHeader">
-                <Icon
-                  className='crossIcon'
-                  name='times'
-                // onClick={() => handleRemove(reward.id)}
-                />
-              </div>
-              <div className="cardBody">
-                <strong>{reward.title}</strong>
-              </div>
-            </div>
-          </Draggable>
+          {rewardsDraggable}
         </Table.Cell>
-        <Table.Cell />
-        <Table.Cell />
-        <Table.Cell />
-        <Table.Cell />
-        <Table.Cell />
+
+
+        {categoriesCol}
       </Table.Row>
     );
   };

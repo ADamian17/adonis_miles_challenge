@@ -1,17 +1,12 @@
 import RewardsActionsType from './rewards.types';
 
 const INITIAL_STATE = {
-  currentPosition: {
-    x: 0, y: 0
-  },
-  defaultPosition: {
-    x: 140,
-    y: 0
-  },
+  R1: ['C1', 'C2'],
+  R2: ['C3', 'C4']
 };
 
-const rewardsReducer = ( state = INITIAL_STATE, action ) => { 
-  switch ( action.type ) {
+const rewardsReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
     case RewardsActionsType.ON_CONTROLLED_DRAG_STOP:
       return {
         ...state

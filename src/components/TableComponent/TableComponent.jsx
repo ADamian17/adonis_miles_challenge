@@ -7,20 +7,10 @@ import Rewards from '../Rewards/Rewards'
 import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
-  const { rewards, handleSave, handleUndo, onStart, defaultPosition, currentPosition } = props;
 
-  const rewardsList = rewards.map(
-    (reward) =>
-      <Rewards
-        // HandleMap={this.HandleMap}
-        key={reward.id}
-        reward={reward}
-        onStart={onStart}
-        defaultPosition={defaultPosition}
-        currentPosition={currentPosition}
-        onControlledDragStop={props.onControlledDragStop}
-      />
-  );
+  console.log(props)
+  const { rewards } = props
+  const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards reward={reward} cols={rewards[reward]} key={index} />)
 
   const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign='center' key={index}>{category.title}</Table.HeaderCell>);
 
@@ -38,7 +28,7 @@ const TableComponent = (props) => {
       </Table.Header>
 
       <Table.Body>
-        {rewardsList}
+        {rewardsHeader}
       </Table.Body>
       {/* Table Footer */}
       <Table.Footer fullWidth>
@@ -51,12 +41,12 @@ const TableComponent = (props) => {
               labelPosition='left'
               primary
               size='small'
-              onClick={handleSave}
+            // onClick={handleSave}
             >
               <Icon name='save' />save
              </Button>
             <Button size='small'
-              onClick={handleUndo}
+            // onClick={handleUndo}
             >Undo</Button>
           </Table.HeaderCell>
         </Table.Row>
