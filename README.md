@@ -2,6 +2,11 @@
 
 !['grafica'](./public/Picture1.png)
 
+## Technologies Used:
+* React/Redux
+    ###### open source 
+  * react-draggable
+
 
 ## Objective: Map the Rewards with the Categories
 
