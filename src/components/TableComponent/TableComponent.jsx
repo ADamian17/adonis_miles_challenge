@@ -56,10 +56,10 @@ const TableComponent = (props) => {
                             
                             <Icon name="save"/>Save
                         </Button>
-                        <Button size="small">Undo</Button>
+                        {/* <Button size="small">Undo</Button>
                         <Button size="small">
                             Redo
-                        </Button>
+                        </Button> */}
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Footer>
