@@ -19,11 +19,3 @@ export const removeCategory = ( reward, index ) => ({
 export const storeCategory = () => ({
     type: RewardsActionsType.STORE_CATEGORY
 });
-
-export const updateCategoryPosition = ( reward, category ) => ({ 
-    type: RewardsActionsType.UPDATE_CATEGORY_POSITION,
-    payload: {
-        reward,
-        category
-    }
-});

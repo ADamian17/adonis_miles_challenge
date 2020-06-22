@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 const rewardsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case RewardsActionsType.ADD_CATEGORY:
-            if (action.payload.category !== null) { 
+            if (action.payload.category !== null && state[action.payload.reward].length !== 1 ) { 
                 state[action.payload.reward].push(action.payload.category);
             }
             return {
@@ -24,11 +24,6 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
             };
         case RewardsActionsType.STORE_CATEGORY:
             localStorage.setItem('rewardsMap', JSON.stringify({ ...state }));
-            return {
-                ...state
-            };
-        case RewardsActionsType.UPDATE_CATEGORY_POSITION:
-            state[action.payload.reward].push(action.payload.category);
             return {
                 ...state
             };
