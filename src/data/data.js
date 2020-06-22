@@ -1,22 +1,17 @@
 export const CATEGORIES = [
     {
-        title: 'C1',
-        x: 370 
+        title: 'C1' 
     },
     {
-        title: 'C2',
-        x: 620
+        title: 'C2'
     },
     {
-        title: 'C3',
-        x: 800
+        title: 'C3'
     },
     {
-        title: 'C4',
-        x: 950 
+        title: 'C4'
     },
     {
-        title: 'C5',
-        x: 1150
+        title: 'C5'
     }
 ];  

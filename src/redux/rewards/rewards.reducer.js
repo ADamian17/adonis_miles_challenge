@@ -25,6 +25,11 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state
             };
+        case RewardsActionsType.UPDATE_CATEGORY_POSITION:
+            state[action.payload.reward].push(action.payload.category);
+            return {
+                ...state
+            };
         default:
             return state;
     }

@@ -17,7 +17,6 @@ class Rewards extends React.Component {
   findCategoryIndex = ( colTitle ) => {
       const index = this.props.rewards[this.props.rewardTitle].findIndex(idx => idx === colTitle);
       this.props.removeCategory(this.props.rewardTitle, index);
-      console.log(index);
   };
   
   render() {
