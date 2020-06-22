@@ -22,15 +22,14 @@ class Rewards extends React.Component {
   handleUpdatePosition = (e, position) => {
       const {rewards, rewardTitle, cols } = this.props; 
       const { lastX } = position;
-      const index = rewards[rewardTitle].length;
+      const index = rewards[rewardTitle].find(idx => idx === cols.title);
       // const updateCol = this.props.rewards[this.props.rewardTitle][index];
       // console.log(updateCol);
       console.log(index);
-      console.log(position);
+      console.log(lastX);
   }
   
   render() {
-      console.log(this.props);
       const { rewardTitle, cols, rewards  } = this.props;
       const position = { x: 106, y: 0 };
 
