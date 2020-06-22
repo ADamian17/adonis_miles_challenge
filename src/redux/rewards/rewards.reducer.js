@@ -1,24 +1,33 @@
 import RewardsActionsType from './rewards.types';
 
 const INITIAL_STATE = {
-  currentPosition: {
-    x: 0, y: 0
-  },
-  defaultPosition: {
-    x: 140,
-    y: 0
-  },
+    R1: [],
+    R2: [],
+    R3: [],
+    R4: [],
+    R5: []
 };
 
-const rewardsReducer = ( state = INITIAL_STATE, action ) => { 
-  switch ( action.type ) {
-    case RewardsActionsType.ON_CONTROLLED_DRAG_STOP:
-      return {
-        ...state
-      }
-    default:
-      return state;
-  }
-}
+const rewardsReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case RewardsActionsType.ADD_CATEGORY:
+            state[action.payload.reward].push(action.payload.category);
+            return {
+                ...state
+            };
+        case RewardsActionsType.REMOVE_CATEGORY:
+            state[action.payload.reward].splice(action.payload.index, 1);
+            return {
+                ...state
+            };
+        case RewardsActionsType.STORE_CATEGORY:
+            localStorage.setItem('rewardsMap', JSON.stringify({ ...state }));
+            return {
+                ...state
+            };
+        default:
+            return state;
+    }
+};
 
 export default rewardsReducer;

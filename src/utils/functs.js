@@ -1,36 +1,26 @@
 export const categoryCol = ( x ) => {
+
+    let col = null;
+
+    if (x > 320 && x < 510) {
+        col = 'C1';
+    }
+
+    if (x > 520 && x < 700) {
+        col = 'C2';
+    }
+
+    if (x > 710 && x < 900) {
+        col = 'C3';
+    }
+
+    if (x > 920 && x < 1070) {
+        col = 'C4';
+    }
+
+    if (x > 1080 && x < 1230) {
+        col = 'C5';
+    }
     
-  let categoryCol = null;
-
-  if (x > 364 && x < 482) {
-    categoryCol = {
-      col: 'C1'
-    }
-  };
-
-  if (x > 550 && x < 662) {
-    categoryCol = {
-      col: 'C2'
-    }
-  };
-
-  if (x > 733 && x < 847) {
-    categoryCol = {
-      col: 'C3'
-    }
-  };
-
-  if ( x > 919 && x < 1031 ) {
-    categoryCol = {
-      col: 'C4'
-    }
-  };
-
-  if (x > 1100 && x < 1214) {
-    categoryCol = {
-      col: 'C5'
-    }
-  };
-
-  return categoryCol;
+    return col;
 };
