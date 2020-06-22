@@ -1,6 +1,9 @@
 import RewardsActionsType from './rewards.types';
 
-export const onControlledDragStop = ( item ) => ({
-  type: RewardsActionsType.ON_CONTROLLED_DRAG_STOP,
-  payload: item,
-})
+export const addCategory = (category, reward) => ({
+  type: RewardsActionsType.ADD_CATEGORY,
+  payload: {
+    category,
+    reward
+  },
+});

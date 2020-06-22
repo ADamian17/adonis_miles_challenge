@@ -18,50 +18,57 @@ class Rewards extends React.Component {
 
   render() {
     console.log(this.props)
-    const { reward, cols } = this.props
+    const { reward, cols, addCategory } = this.props
     const position = { x: 140, y: 0 }
 
-    const categoriesCol = CATEGORIES.map(col => <Table.Cell >
-      {cols.includes(col.title) ? <div className='cardContainer'>
-        <div className="cardHeader">
-          <Icon
-            className='crossIcon'
-            name='times'
-          />
-        </div>
-        <div className="cardBody">
-          <strong>{reward}</strong>
-        </div>
-      </div> : null}
-    </Table.Cell>
-    )
-
-    const rewardsDraggable = cols.map((item) =>
-
-      <Draggable
-        axis="x"
-        position={position}
-      >
-        <div className='cardContainer'>
-          <div className="cardHeader">
-            <Icon
-              className='crossIcon'
-              name='times'
-            />
-          </div>
-          <div className="cardBody">
-            <strong>{reward}</strong>
-          </div>
-        </div>
-      </Draggable>
-    )
+    // NOTE this handles cell
+    const categoriesCol = CATEGORIES.map(col =>
+      <Table.Cell >
+        {
+          cols.includes(col.title) ? (
+            <Draggable
+              axis="x"
+              position={position}
+            >
+              <div className='cardContainer'>
+                <div className="cardHeader">
+                  <Icon
+                    className='crossIcon'
+                    name='times'
+                  />
+                </div>
+                <div className="cardBody">
+                  <strong>{reward}</strong>
+                </div>
+              </div>
+            </Draggable>
+          ) : null
+        }
+      </Table.Cell>
+    );
 
     return (
       <Table.Row>
-        <Table.Cell textAlign='center'>
-          {rewardsDraggable}
-        </Table.Cell>
 
+        <Table.Cell textAlign='center'>
+          <Draggable
+            axis="x"
+            position={position}
+            onStop={() => addCategory("C5", reward)}
+          >
+            <div className='cardContainer'>
+              <div className="cardHeader">
+                <Icon
+                  className='crossIcon'
+                  name='times'
+                />
+              </div>
+              <div className="cardBody">
+                <strong>{reward}</strong>
+              </div>
+            </div>
+          </Draggable>
+        </Table.Cell>
 
         {categoriesCol}
       </Table.Row>

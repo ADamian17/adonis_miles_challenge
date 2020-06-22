@@ -7,7 +7,8 @@ const INITIAL_STATE = {
 
 const rewardsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case RewardsActionsType.ON_CONTROLLED_DRAG_STOP:
+    case RewardsActionsType.ADD_CATEGORY:
+      state[action.payload.reward].push(action.payload.category)
       return {
         ...state
       }
