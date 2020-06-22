@@ -24,6 +24,3 @@ export const categoryCol = ( x ) => {
     
     return col;
 };
-
-
-// export const findIndex = ( arr ) 

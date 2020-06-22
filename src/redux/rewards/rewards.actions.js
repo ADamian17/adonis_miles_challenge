@@ -8,9 +8,10 @@ export const addCategory = ( reward, category ) => ({
     }
 });
 
-export const removeCategory = ( reward ) => ({
+export const removeCategory = ( reward, index ) => ({
     type: RewardsActionsType.REMOVE_CATEGORY,
     payload: {
-        reward
+        reward,
+        index
     }
 }); 

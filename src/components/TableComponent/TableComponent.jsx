@@ -9,7 +9,7 @@ import { CATEGORIES } from '../../data/data';
 const TableComponent = (props) => {
 
     const { rewards, addCategory, removeCategory } = props;
-  const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards reward={reward} cols={rewards[reward]} addCategory={addCategory} removeCategory={removeCategory} key={index} />);
+    const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards rewards={rewards} rewardTitle={reward} cols={rewards[reward]} addCategory={addCategory} removeCategory={removeCategory} key={index} />);
 
     const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign="center" key={index}>{category.title}</Table.HeaderCell>);
 

@@ -11,8 +11,8 @@ const mapStateToProps = state => ({
 // this given the com[ponent a way to disoatch an action
 const mapDispatchToProps = dispatch => ({
     // this is my action in my reducer
-    addCategory: (reward, category) => dispatch(addCategory(reward, category)),
-    removeCategory: (reward) => dispatch(removeCategory(reward))
+    addCategory: (category, reward) => dispatch(addCategory(category, reward)),
+    removeCategory: (reward, index) => dispatch(removeCategory(reward, index))
 });
 
 const TableComponentContainer = connect(mapStateToProps, mapDispatchToProps)(TableComponent);
