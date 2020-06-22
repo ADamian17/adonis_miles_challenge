@@ -18,10 +18,20 @@ class Rewards extends React.Component {
       const index = this.props.rewards[this.props.rewardTitle].findIndex(idx => idx === colTitle);
       this.props.removeCategory(this.props.rewardTitle, index);
   };
+
+  handleUpdatePosition = (e, position) => {
+      const {rewards, rewardTitle, cols } = this.props; 
+      const { lastX } = position;
+      const index = rewards[rewardTitle].length;
+      // const updateCol = this.props.rewards[this.props.rewardTitle][index];
+      // console.log(updateCol);
+      console.log(index);
+      console.log(position);
+  }
   
   render() {
       console.log(this.props);
-      const { rewardTitle, cols  } = this.props;
+      const { rewardTitle, cols, rewards  } = this.props;
       const position = { x: 106, y: 0 };
 
       // NOTE this handles cell
@@ -31,6 +41,7 @@ class Rewards extends React.Component {
                   cols.includes(col.title) ? (
                       <Draggable
                           axis="x"
+                          onStop={this.handleUpdatePosition}
                           defaultPosition={{x: 60, y: 0}}>
                           <div className="cardContainer">
                               <div className="cardHeader">
@@ -53,17 +64,29 @@ class Rewards extends React.Component {
           <Table.Row>
 
               <Table.Cell textAlign="center">
-                  <Draggable
-                      axis="x"
-                      position={position}
-                      onStop={this.onControlledDragStop }>
-                      <div className="cardContainer">
-                          <div className="cardHeader" />
-                          <div className="cardBody">
-                              <strong>{rewardTitle}</strong>
+                  {
+                      rewards[rewardTitle].length > 0 ? (
+                          <div className="cardContainer">
+                              <div className="cardHeader" />
+                              <div className="cardBody">
+                                  <strong>{rewardTitle}</strong>
+                              </div>
                           </div>
-                      </div>
-                  </Draggable>
+                      ) : (
+                          <Draggable
+                              axis="x"
+                              position={position}
+                              onStop={this.onControlledDragStop}>
+                              <div className="cardContainer">
+                                  <div className="cardHeader" />
+                                  <div className="cardBody">
+                                      <strong>{rewardTitle}</strong>
+                                  </div>
+                              </div>
+                          </Draggable>
+                      )
+                  }
+                  
               </Table.Cell>
 
               {categoriesCol}
