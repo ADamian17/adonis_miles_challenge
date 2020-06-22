@@ -20,6 +20,11 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state
             };
+        case RewardsActionsType.STORE_CATEGORY:
+            localStorage.setItem('rewardsMap', JSON.stringify({ ...state }));
+            return {
+                ...state
+            };
         default:
             return state;
     }

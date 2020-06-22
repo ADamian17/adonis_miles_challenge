@@ -38,45 +38,6 @@ class App extends React.Component {
     //     return error;
     // };
 
-    // // NOTE this is not working 
-    // handleRemove = (id) => {
-    //     const { selectedReward } = this.state;
-    //     const defaultX = this.state.defaultPosition.x;
-    //     const selectedRewardX = selectedReward.x;
-    //     const reward = this.state.rewards[id];
-
-    //     if (selectedRewardX !== defaultX && selectedReward.id === id) {
-    //         this.setState({
-    //             selectedReward: {
-    //                 ...reward,
-    //                 x: 0,
-    //                 y: 0
-    //             }
-    //             // rewardsMap: rewardsMap.splice(selectedReward.id, 1)
-    //         });
-    //         console.log('id:', id);
-    //         console.log('selectedReward:', selectedReward);
-    //         console.log(selectedRewardX);
-    //         console.log(this.state.currentPosition);
-    //         return;
-    //     }
-    // };
-
-    // // NOTE this is not working 
-    // handleUndo = () => {
-    //     const { rewardsMap } = this.state;
-    //     const localStorageLength = localStorage.length;
-
-    //     if (localStorageLength > 0 && rewardsMap.length > 0) {
-    //         localStorage.removeItem('rewardsMap');
-    //         this.setState({
-    //             rewardsMap: []
-    //         });
-    //     }
-    //     console.log(rewardsMap);
-    //     console.log('localStorageLength:', localStorageLength);
-    // };
-
     render() {
         return (
             <MainContainer>

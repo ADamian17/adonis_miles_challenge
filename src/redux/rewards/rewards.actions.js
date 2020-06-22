@@ -14,4 +14,8 @@ export const removeCategory = ( reward, index ) => ({
         reward,
         index
     }
-}); 
+});
+
+export const storeCategory = () => ({
+    type: RewardsActionsType.STORE_CATEGORY
+});
