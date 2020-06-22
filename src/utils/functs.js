@@ -24,3 +24,4 @@ export const categoryCol = ( x ) => {
     
     return col;
 };
+
