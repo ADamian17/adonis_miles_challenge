@@ -19,16 +19,16 @@ class Rewards extends React.Component {
       this.props.removeCategory(this.props.rewardTitle, index);
   };
 
-  handleUpdatePosition = (e, position) => {
-      const { rewards, rewardTitle, cols } = this.props;
-      const { lastX } = position;
+  // handleUpdatePosition = (e, position) => {
+  //     const { rewards, rewardTitle, cols } = this.props;
+  //     const { lastX } = position;
 
-      const newCol = categoryCol(lastX);
-      // const colTitle = cols[0].replace(cols[0], categoryCol(lastX));
-      console.log('newCol', newCol);
-      console.log('lastX', lastX);
+  //     const newCol = categoryCol(lastX);
+  //     const colTitle = cols[0].replace(cols[0], categoryCol(lastX));
+  //     console.log('newCol', newCol);
+  //     console.log('lastX', lastX);
     
-  }
+  // }
   
   render() {
       const { rewardTitle, cols, rewards  } = this.props;
@@ -41,7 +41,7 @@ class Rewards extends React.Component {
                   cols.includes(col.title) ? (
                       <Draggable
                           axis="x"
-                          onStop={this.handleUpdatePosition}
+                          // onStop={this.handleUpdatePosition}
                           defaultPosition={{x: 60, y: 0}}>
                           <div className="cardContainer">
                               <div className="cardHeader">

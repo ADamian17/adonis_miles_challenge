@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { addCategory, removeCategory, storeCategory, updateCategoryPosition } from '../redux/rewards/rewards.actions';
 
 import TableComponent from '../components/TableComponent/TableComponent';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 // const success = toast.success('You have save you rewards!', {
 //     position: 'top-right',
