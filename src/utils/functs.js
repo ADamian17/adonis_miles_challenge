@@ -2,23 +2,23 @@ export const categoryCol = ( x ) => {
 
     let col = null;
 
-    if (x > 364 && x < 482) {
+    if (x > 320 && x < 510) {
         col = 'C1';
     }
 
-    if (x > 550 && x < 662) {
+    if (x > 520 && x < 700) {
         col = 'C2';
     }
 
-    if (x > 733 && x < 847) {
+    if (x > 710 && x < 900) {
         col = 'C3';
     }
 
-    if (x > 919 && x < 1031) {
+    if (x > 920 && x < 1070) {
         col = 'C4';
     }
 
-    if (x > 1100 && x < 1214) {
+    if (x > 1080 && x < 1230) {
         col = 'C5';
     }
     

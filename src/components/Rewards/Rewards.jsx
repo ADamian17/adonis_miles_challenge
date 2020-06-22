@@ -10,7 +10,8 @@ import { categoryCol } from '../../utils/functs';
 class Rewards extends React.Component {
 
    onControlledDragStop = (e, position) => {
-       const { lastX } = position;
+      const { lastX } = position;
+      console.log(position)
        this.props.addCategory(this.props.reward, categoryCol(lastX));
    };
   
