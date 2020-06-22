@@ -8,7 +8,7 @@ import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
 
-  const { rewards, addCategory, removeCategory, storeCategory } = props;
+    const { rewards, addCategory, removeCategory, storeCategory } = props;
     const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards rewards={rewards} rewardTitle={reward} cols={rewards[reward]} addCategory={addCategory} removeCategory={removeCategory} key={index} />);
 
     const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign="center" key={index}>{category.title}</Table.HeaderCell>);
@@ -35,12 +35,14 @@ const TableComponent = (props) => {
                     <Table.HeaderCell />
                     <Table.HeaderCell colSpan="5">
                         <Button
+                            onClick={storeCategory}
                             floated="right"
                             icon
                             labelPosition="left"
                             primary
                             size="small">
-                            <Icon name="save" onClick={storeCategory}/>save
+                              
+                            <Icon name="save"/>save
                         </Button>
                         <Button size="small">Undo</Button>
                     </Table.HeaderCell>
