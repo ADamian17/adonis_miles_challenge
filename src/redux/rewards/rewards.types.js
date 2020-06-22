@@ -1,5 +1,7 @@
 const RewardsActionsType = {
-  ON_CONTROLLED_DRAG_STOP: 'ON_CONTROLLED_DRAG_STOP'
+    ADD_CATEGORY: 'ADD_CATEGORY',
+    REMOVE_CATEGORY: 'REMOVE_CATEGORY',
+    STORE_CATEGORY: 'STORE_CATEGORY' 
 };
 
 export default RewardsActionsType;

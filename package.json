@@ -1,10 +1,13 @@
 {
   "name": "adonis_miles_challenge",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -18,7 +21,8 @@
     "reselect": "^4.0.0",
     "sass": "^1.26.8",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.16.2",
+    "@testing-library/react": "^9.5.0"
   }
 }
