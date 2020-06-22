@@ -1,8 +1,11 @@
 import RewardsActionsType from './rewards.types';
 
 const INITIAL_STATE = {
-    R1: ['C1', 'C2'],
-    R2: ['C3', 'C4']
+    R1: [],
+    R2: [],
+    R3: [],
+    R4: [],
+    R5: []
 };
 
 const rewardsReducer = (state = INITIAL_STATE, action) => {

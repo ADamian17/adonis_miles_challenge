@@ -24,7 +24,7 @@
         "import"
     ],
     "settings": {
-        "import/resolver": "webpack"
+        "import": "webpack"
     },
     "globals": {
         "__SERVER_URL__": true,
