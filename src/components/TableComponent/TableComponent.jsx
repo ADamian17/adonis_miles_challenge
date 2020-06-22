@@ -8,9 +8,8 @@ import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
 
-    console.log(props);
-    const { rewards, addCategory } = props;
-    const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards reward={reward} cols={rewards[reward]} addCategory={addCategory} key={index} />);
+    const { rewards, addCategory, removeCategory } = props;
+  const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards reward={reward} cols={rewards[reward]} addCategory={addCategory} removeCategory={removeCategory} key={index} />);
 
     const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign="center" key={index}>{category.title}</Table.HeaderCell>);
 

@@ -10,14 +10,13 @@ import { categoryCol } from '../../utils/functs';
 class Rewards extends React.Component {
 
    onControlledDragStop = (e, position) => {
-      const { lastX } = position;
-      console.log(position)
+       const { lastX } = position;
        this.props.addCategory(this.props.reward, categoryCol(lastX));
    };
   
    render() {
        console.log(this.props);
-       const { reward, cols } = this.props;
+       const { reward, cols, removeCategory } = this.props;
        const position = { x: 106, y: 0 };
 
        // NOTE this handles cell
@@ -32,7 +31,8 @@ class Rewards extends React.Component {
                                <div className="cardHeader">
                                    <Icon
                                        className="crossIcon"
-                                       name="times" />
+                                       name="times"
+                                       onClick={() => removeCategory(reward)}/>
                                </div>
                                <div className="cardBody">
                                    <strong>{reward}</strong>

@@ -15,6 +15,11 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state
             };
+        case RewardsActionsType.REMOVE_CATEGORY:
+            state[action.payload.reward].splice(0, 1);
+            return {
+                ...state
+            };
         default:
             return state;
     }
