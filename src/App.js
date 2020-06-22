@@ -7,7 +7,7 @@ import TableContainer from './containers/TableContainer';
 const App = () => {
     return (
         <MainContainer>
-            <Header>Miles Front-end Challenge</Header>
+            <Header>Miles Front-End Challenge</Header>
             <TableContainer />
         </MainContainer>
     );

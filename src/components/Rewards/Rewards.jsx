@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Icon } from 'semantic-ui-react';
 import Draggable from 'react-draggable';
 
+
 import './Rewards.scss';
 
 import { CATEGORIES } from '../../data/data';
@@ -18,17 +19,7 @@ class Rewards extends React.Component {
       const index = this.props.rewards[this.props.rewardTitle].findIndex(idx => idx === colTitle);
       this.props.removeCategory(this.props.rewardTitle, index);
   };
-
-  // handleUpdatePosition = (e, position) => {
-  //     const { rewards, rewardTitle, cols } = this.props;
-  //     const { lastX } = position;
-
-  //     const newCol = categoryCol(lastX);
-  //     const colTitle = cols[0].replace(cols[0], categoryCol(lastX));
-  //     console.log('newCol', newCol);
-  //     console.log('lastX', lastX);
-    
-  // }
+  
   
   render() {
       const { rewardTitle, cols, rewards  } = this.props;
@@ -41,7 +32,7 @@ class Rewards extends React.Component {
                   cols.includes(col.title) ? (
                       <Draggable
                           axis="x"
-                          // onStop={this.handleUpdatePosition}
+                          disabled={rewards[rewardTitle].length > 0 ? true : false}
                           defaultPosition={{x: 60, y: 0}}>
                           <div className="cardContainer">
                               <div className="cardHeader">
@@ -51,7 +42,7 @@ class Rewards extends React.Component {
                                       onClick={() => this.findCategoryIndex(col.title)}/>
                               </div>
                               <div className="cardBody">
-                                  <strong>{rewardTitle}</strong>
+                                  <strong className="card-reward-title">{rewardTitle}</strong>
                               </div>
                           </div>
                       </Draggable>
@@ -65,7 +56,7 @@ class Rewards extends React.Component {
               <Table.Cell textAlign="center">
                   <Draggable
                       axis="x"
-                      disabled={rewards[rewardTitle].length > 0 ? true : false}
+                      // disabled={rewards[rewardTitle].length > 0 ? true : false}
                       position={position}
                       onStop={this.onControlledDragStop}>
                       <div className="cardContainer">
