@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addCategory, removeCategory, storeCategory } from '../redux/rewards/rewards.actions';
+import { addCategory, removeCategory, storeCategory, updateCategoryPosition } from '../redux/rewards/rewards.actions';
 
 import TableComponent from '../components/TableComponent/TableComponent';
 
@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => ({
     // this is my action in my reducer
     addCategory: (category, reward) => dispatch(addCategory(category, reward)),
     removeCategory: (reward, index) => dispatch(removeCategory(reward, index)),
-    storeCategory: () => dispatch( storeCategory() )  
+    storeCategory: () => dispatch(storeCategory()),
+    updateCategoryPosition: (category, reward) => dispatch(updateCategoryPosition(category, reward))
 });
 
 const TableComponentContainer = connect(mapStateToProps, mapDispatchToProps)(TableComponent);

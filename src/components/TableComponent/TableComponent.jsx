@@ -9,9 +9,19 @@ import { CATEGORIES } from '../../data/data';
 const TableComponent = (props) => {
 
 
-  const { rewards, addCategory, removeCategory, storeCategory } = props;
+    const { rewards, addCategory, removeCategory, storeCategory, updateCategoryPosition } = props;
 
-    const rewardsHeader = Object.keys(props.rewards).map((reward, index) => <Rewards rewards={rewards} rewardTitle={reward} cols={rewards[reward]} addCategory={addCategory} removeCategory={removeCategory} key={index} />);
+    const rewardsHeader = Object.keys(props.rewards)
+        .map((reward, index) =>
+            <Rewards
+                rewards={rewards}
+                rewardTitle={reward}
+                cols={rewards[reward]}
+                addCategory={addCategory}
+                removeCategory={removeCategory}
+                updateCategoryPosition={updateCategoryPosition}
+                key={index} />
+        );
 
     const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign="center" key={index}>{category.title}</Table.HeaderCell>);
 
@@ -44,9 +54,12 @@ const TableComponent = (props) => {
                             primary
                             size="small">
                             
-                            <Icon name="save"/>save
+                            <Icon name="save"/>Save
                         </Button>
-                        <Button size="small">Undo</Button>
+                        {/* <Button size="small">Undo</Button>
+                        <Button size="small">
+                            Redo
+                        </Button> */}
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Footer>
