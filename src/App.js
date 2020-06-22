@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import MainContainer from './components/MainContainer/MainContainer';
 import TableComponent from './components/TableComponent/TableComponent';
-import { categoryCol } from './utils/functs'
+import { categoryCol } from './utils/functs';
 import TableContainer from './containers/TableContainer';
 
 class App extends React.Component {
@@ -43,7 +43,7 @@ class App extends React.Component {
                 ...categoryCol(position.x)
             }
         });
-        console.log(this.state.selectedReward)
+        console.log(this.state.selectedReward);
     }
 
     onControlledDrag = (e, position) => {
@@ -54,18 +54,18 @@ class App extends React.Component {
     };
 
     onControlledDragStop = (e, position, id) => {
-        e.stopPropagation()
+        e.stopPropagation();
         this.onControlledDrag(e, position);
         this.onStop(id, this.state.currentPosition);
-        this.HandleMap()
+        this.HandleMap();
     };
 
     HandleMap = () => {
-        const { rewardsMap, selectedReward } = this.state
+        const { rewardsMap, selectedReward } = this.state;
 
         if (selectedReward && selectedReward.x < 875 && selectedReward.x > 199) {
             rewardsMap.push(selectedReward);
-        };
+        }
 
         console.log(this.state.rewardsMap);
     };
@@ -74,40 +74,40 @@ class App extends React.Component {
 
     handleSave = () => {
         const success = toast.success('You have save you rewards!', {
-            position: "top-right",
+            position: 'top-right',
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
+            draggable: true
         });
 
         const error = toast.error('There is nothing to save', {
-            position: "top-right",
+            position: 'top-right',
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
+            draggable: true
         });
 
-        const { rewardsMap } = this.state
+        const { rewardsMap } = this.state;
         const localStorageLength = localStorage.length;
 
         if (localStorageLength === 0 && rewardsMap.length > 0) {
             localStorage.setItem('rewardsMap', JSON.stringify({ ...rewardsMap }));
-            return success
+            return success;
         }
-        console.log('localStorageLength:', localStorageLength)
-        console.log('rewardsMapLength:', rewardsMap.length)
+        console.log('localStorageLength:', localStorageLength);
+        console.log('rewardsMapLength:', rewardsMap.length);
         return error;
     };
 
     // NOTE this is not working 
     handleRemove = (id) => {
         const { selectedReward } = this.state;
-        const defaultX = this.state.defaultPosition.x
-        const selectedRewardX = selectedReward.x
+        const defaultX = this.state.defaultPosition.x;
+        const selectedRewardX = selectedReward.x;
         const reward = this.state.rewards[id];
 
         if (selectedRewardX !== defaultX && selectedReward.id === id) {
@@ -119,17 +119,17 @@ class App extends React.Component {
                 }
                 // rewardsMap: rewardsMap.splice(selectedReward.id, 1)
             });
-            console.log('id:', id)
-            console.log('selectedReward:', selectedReward)
-            console.log(selectedRewardX)
-            console.log(this.state.currentPosition)
+            console.log('id:', id);
+            console.log('selectedReward:', selectedReward);
+            console.log(selectedRewardX);
+            console.log(this.state.currentPosition);
             return;
-        };
+        }
     };
 
     // NOTE this is not working 
     handleUndo = () => {
-        const { rewardsMap } = this.state
+        const { rewardsMap } = this.state;
         const localStorageLength = localStorage.length;
 
         if (localStorageLength > 0 && rewardsMap.length > 0) {
@@ -137,9 +137,9 @@ class App extends React.Component {
             this.setState({
                 rewardsMap: []
             });
-        };
+        }
         console.log(rewardsMap);
-        console.log('localStorageLength:', localStorageLength)
+        console.log('localStorageLength:', localStorageLength);
     };
 
     render() {
@@ -155,6 +155,4 @@ class App extends React.Component {
 }
 
 export default App;
-
-
 
