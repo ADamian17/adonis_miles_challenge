@@ -19,3 +19,4 @@ export const removeCategory = ( reward, index ) => ({
 export const storeCategory = () => ({
     type: RewardsActionsType.STORE_CATEGORY
 });
+

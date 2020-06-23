@@ -7,16 +7,16 @@ import Rewards from '../Rewards/Rewards';
 import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
-
+    console.log(props)
 
     const { rewards, addCategory, removeCategory, storeCategory, updateCategoryPosition } = props;
-
-    const rewardsHeader = Object.keys(props.rewards)
+    const { present } = rewards; 
+    const rewardsHeader = Object.keys(present)
         .map((reward, index) =>
             <Rewards
-                rewards={rewards}
+                rewards={present}
                 rewardTitle={reward}
-                cols={rewards[reward]}
+                cols={present[reward]}
                 addCategory={addCategory}
                 removeCategory={removeCategory}
                 updateCategoryPosition={updateCategoryPosition}

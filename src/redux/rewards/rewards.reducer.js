@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 const rewardsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case RewardsActionsType.ADD_CATEGORY:
-            if (action.payload.category !== null && state[action.payload.reward].length !== 1 ) { 
+            if ( action.payload.category !== null ) { 
                 state[action.payload.reward].push(action.payload.category);
             }
             return {
