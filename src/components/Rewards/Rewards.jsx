@@ -36,23 +36,18 @@ class Rewards extends React.Component {
             <Table.Cell key={index} width={2}>
                 {
                     cols.includes(col.title) ? (
-                        <Draggable
-                            className="dragable-main-container"
-                            axis="x"
-                            disabled={rewards[rewardTitle].length > 0 ? true : false}
-                            defaultPosition={{x: 8, y: 0}}>
-                            <div className="cardContainer">
-                                <div className="cardHeader">
-                                    <Icon
-                                        className="crossIcon"
-                                        name="times"
-                                        onClick={() => this.findCategoryIndex(col.title)}/>
-                                </div>
-                                <div className="cardBody">
-                                    <strong className="card-reward-title">{rewardTitle}</strong>
-                                </div>
+                        
+                        <div className="unDraggCategory">
+                            <div className="cardHeader">
+                                <Icon
+                                    className="crossIcon"
+                                    name="times"
+                                    onClick={() => this.findCategoryIndex(col.title)}/>
                             </div>
-                        </Draggable>
+                            <div className="cardBody">
+                                <strong className="card-reward-title">{rewardTitle}</strong>
+                            </div>
+                        </div>
                     ) : null
                 }
             </Table.Cell>
@@ -63,10 +58,9 @@ class Rewards extends React.Component {
                 <Table.Cell textAlign="center" width={2}>
                     <Draggable
                         axis="x"
-                        className="dragable-main-container"
                         position={position}
                         onStop={rewards[rewardTitle].length > 0 ? this.handleUpDateRewardPosition : this.onControlledDragStop}>
-                        <div className="cardContainer">
+                        <div className="cardContainer dragable-main-container">
                             <div className="cardHeader" />
                             <div className="cardBody">
                                 <strong>{rewardTitle}</strong>
