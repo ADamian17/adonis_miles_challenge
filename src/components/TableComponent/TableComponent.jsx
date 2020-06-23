@@ -7,9 +7,9 @@ import Rewards from '../Rewards/Rewards';
 import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
-    const { rewards, addCategory, removeCategory, storeCategory, undo, redo } = props;
+    const { rewards, addCategory, removeCategory, storeCategory, upDateRewardPosition, undo, redo } = props;
     const { present } = rewards; 
-    const rewardsHeader = Object.keys(present)
+    const rewardsList = Object.keys(present)
         .map((reward, index) =>
             <Rewards
                 rewards={present}
@@ -17,6 +17,7 @@ const TableComponent = (props) => {
                 cols={present[reward]}
                 addCategory={addCategory}
                 removeCategory={removeCategory}
+                upDateRewardPosition={upDateRewardPosition}
                 key={index} />
         );
 
@@ -35,7 +36,7 @@ const TableComponent = (props) => {
             </Table.Header>
 
             <Table.Body>
-                {rewardsHeader}
+                {rewardsList}
             </Table.Body>
             {/* Table Footer */}
             <Table.Footer fullWidth>

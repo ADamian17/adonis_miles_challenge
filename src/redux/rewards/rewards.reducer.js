@@ -1,5 +1,4 @@
 import RewardsActionsType from './rewards.types';
-import { ActionCreators } from 'redux-undo';
 
 const INITIAL_STATE = {
     R1: [],
@@ -13,9 +12,7 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
     state = JSON.parse(JSON.stringify(state));
     switch (action.type) {
         case RewardsActionsType.ADD_CATEGORY:
-            if ( action.payload.category !== null ) { 
-                state[action.payload.reward].push(action.payload.category);
-            }
+            state[action.payload.reward].push(action.payload.category);
             return {
                 ...state
             };
@@ -29,12 +26,12 @@ const rewardsReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state
             };
-        case RewardsActionsType.UNDO:
-            ActionCreators.undo();
+        case RewardsActionsType.UPDATE_REWARD_POSITION:
+            state[action.payload.reward].pop();
+            state[action.payload.reward].push(action.payload.category);
             return {
                 ...state
             };
-        
         default:
             return state;
     }
