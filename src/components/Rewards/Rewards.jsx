@@ -28,7 +28,6 @@ class Rewards extends React.Component {
         upDateRewardPosition(rewardTitle, getCategoryForPos(lastX));
     }
   
-  
     render() {
         const { rewardTitle, cols, rewards  } = this.props;
         const position = { x: 16, y: 0 };

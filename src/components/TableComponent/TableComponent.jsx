@@ -8,6 +8,7 @@ import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
     const { rewards, addCategory, removeCategory, storeCategory, upDateRewardPosition, undo, redo } = props;
+
     const { present } = rewards; 
     const rewardsList = Object.keys(present)
         .map((reward, index) =>
