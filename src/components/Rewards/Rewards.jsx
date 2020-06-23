@@ -36,7 +36,7 @@ class Rewards extends React.Component {
             <Table.Cell key={index} width={2}>
                 {
                     cols.includes(col.title) ? (
-                        
+
                         <div className="unDraggCategory">
                             <div className="cardHeader">
                                 <Icon
@@ -59,17 +59,18 @@ class Rewards extends React.Component {
                     <Draggable
                         axis="x"
                         position={position}
+                        bounds="table"
                         onStop={rewards[rewardTitle].length > 0 ? this.handleUpDateRewardPosition : this.onControlledDragStop}>
                         <div className="cardContainer dragable-main-container">
                             <div className="cardHeader" />
                             <div className="cardBody">
-                                <strong>{rewardTitle}</strong>
+                                <strong>
+                                    {rewardTitle}
+                                </strong>
                             </div>
                         </div>
                     </Draggable>
-                  
                 </Table.Cell>
-
                 {categoriesCol}
             </Table.Row>
         );

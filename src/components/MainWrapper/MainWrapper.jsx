@@ -7,7 +7,6 @@ import './MainWrapper.scss';
 const MainContainer = ({ children }) => {
     return (
         <Grid className="mainContainer" textAlign="center" verticalAlign="middle">
-            {/* NOTE Notification */}
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
