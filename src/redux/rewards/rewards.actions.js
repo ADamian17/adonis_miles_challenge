@@ -1,4 +1,5 @@
 import RewardsActionsType from './rewards.types';
+import { toast } from 'react-toastify';
 
 export const addCategory = ( reward, category ) => ({
     type: RewardsActionsType.ADD_CATEGORY,
@@ -17,15 +18,23 @@ export const removeCategory = ( reward, index ) => ({
 });
 
 export const storeCategory = () => ({
-    type: RewardsActionsType.STORE_CATEGORY
+    type: RewardsActionsType.STORE_CATEGORY,
+    sucess: toast.dark('Success!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+    })
 });
 
-export const undo = () => ({
-    type: RewardsActionsType.UNDO
-});
 
-
-export const Redo = () => ({
-    type: RewardsActionsType.UNDO
+export const upDateRewardPosition = (reward, category ) => ({
+    type: RewardsActionsType.UPDATE_REWARD_POSITION,
+    payload: {
+        reward,
+        category
+    }
 });
 
