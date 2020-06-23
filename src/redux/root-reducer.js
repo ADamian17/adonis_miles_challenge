@@ -3,12 +3,8 @@ import undoable from 'redux-undo';
 
 import rewardsReducer from './rewards/rewards.reducer';
 
-// export default combineReducers({
-//     rewards: rewardsReducer
-// });
-
 export default combineReducers({
     rewards: undoable(rewardsReducer, {
-        limit: 10
+        limit: 15
     })
 });

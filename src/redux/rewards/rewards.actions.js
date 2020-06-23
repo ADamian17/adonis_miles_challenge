@@ -20,3 +20,12 @@ export const storeCategory = () => ({
     type: RewardsActionsType.STORE_CATEGORY
 });
 
+export const undo = () => ({
+    type: RewardsActionsType.UNDO
+});
+
+
+export const Redo = () => ({
+    type: RewardsActionsType.UNDO
+});
+
