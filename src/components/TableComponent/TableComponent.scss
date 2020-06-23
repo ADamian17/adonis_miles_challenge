@@ -1,3 +1,13 @@
+.ui.table {
+    width: auto;
+    margin: 0 auto;
+}
+
+.ui.table td.two.wide {
+  width: 100px !important;
+}
+
+
 .table-area {
   width:  900px;
   height: 550px;
@@ -40,4 +50,6 @@
 
   }
 }
+
+
 

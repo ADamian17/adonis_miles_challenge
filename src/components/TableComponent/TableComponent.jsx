@@ -7,8 +7,6 @@ import Rewards from '../Rewards/Rewards';
 import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
-    console.log(props);
-
     const { rewards, addCategory, removeCategory, storeCategory, undo, redo } = props;
     const { present } = rewards; 
     const rewardsHeader = Object.keys(present)
@@ -25,8 +23,7 @@ const TableComponent = (props) => {
     const categoriesList = CATEGORIES.map((category, index) => <Table.HeaderCell textAlign="center" key={index}>{category.title}</Table.HeaderCell>);
 
     return (
-        <Table celled structured>
-            {/* NOTE Table Header */}
+        <Table celled structured className="fixed-width">
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell textAlign="center" rowSpan="2" width={3}>Rewards</Table.HeaderCell>
