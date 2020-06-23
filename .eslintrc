@@ -75,13 +75,6 @@
             "multi-line",
             "consistent"
         ],
-        "no-unused-vars": [
-            "error",
-            {
-                "args": "none",
-                "varsIgnorePattern": "React"
-            }
-        ],
         "new-cap": [
             "error",
             {

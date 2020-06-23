@@ -7,19 +7,18 @@ import Rewards from '../Rewards/Rewards';
 import { CATEGORIES } from '../../data/data';
 
 const TableComponent = (props) => {
+    console.log(props);
 
-
-    const { rewards, addCategory, removeCategory, storeCategory, updateCategoryPosition } = props;
-
-    const rewardsHeader = Object.keys(props.rewards)
+    const { rewards, addCategory, removeCategory, storeCategory, undo, redo } = props;
+    const { present } = rewards; 
+    const rewardsHeader = Object.keys(present)
         .map((reward, index) =>
             <Rewards
-                rewards={rewards}
+                rewards={present}
                 rewardTitle={reward}
-                cols={rewards[reward]}
+                cols={present[reward]}
                 addCategory={addCategory}
                 removeCategory={removeCategory}
-                updateCategoryPosition={updateCategoryPosition}
                 key={index} />
         );
 
@@ -56,10 +55,14 @@ const TableComponent = (props) => {
                             
                             <Icon name="save"/>Save
                         </Button>
-                        {/* <Button size="small">Undo</Button>
-                        <Button size="small">
+                        <Button
+                            onClick={undo}
+                            size="small">Undo</Button>
+                        <Button
+                            onClick={redo}
+                            size="small">
                             Redo
-                        </Button> */}
+                        </Button>
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Footer>
