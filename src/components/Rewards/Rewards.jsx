@@ -6,13 +6,13 @@ import Draggable from 'react-draggable';
 import './Rewards.scss';
 
 import { CATEGORIES } from '../../data/data';
-import { categoryCol } from '../../utils/functs';
+import { getCategoryForPos } from '../../utils/functs';
 
 class Rewards extends React.Component {
 
    onControlledDragStop = (e, position) => {
        const { lastX } = position;
-       this.props.addCategory(this.props.rewardTitle, categoryCol(lastX));
+       this.props.addCategory(this.props.rewardTitle, getCategoryForPos(lastX));
    };
   
   findCategoryIndex = ( colTitle ) => {
@@ -23,17 +23,17 @@ class Rewards extends React.Component {
   
   render() {
       const { rewardTitle, cols, rewards  } = this.props;
-      const position = { x: 106, y: 0 };
+      const position = { x: 16, y: 0 };
 
-      // NOTE this handles cell
       const categoriesCol = CATEGORIES.map((col, index) =>
           <Table.Cell key={index} width={2}>
               {
                   cols.includes(col.title) ? (
                       <Draggable
+                          className="dragable-main-container"
                           axis="x"
                           disabled={rewards[rewardTitle].length > 0 ? true : false}
-                          defaultPosition={{x: 60, y: 0}}>
+                          defaultPosition={{x: 8, y: 0}}>
                           <div className="cardContainer">
                               <div className="cardHeader">
                                   <Icon
@@ -53,10 +53,10 @@ class Rewards extends React.Component {
 
       return (
           <Table.Row>
-              <Table.Cell textAlign="center">
+              <Table.Cell textAlign="center" width={2}>
                   <Draggable
                       axis="x"
-                      // disabled={rewards[rewardTitle].length > 0 ? true : false}
+                      className="dragable-main-container"
                       position={position}
                       onStop={this.onControlledDragStop}>
                       <div className="cardContainer">
